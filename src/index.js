@@ -1,13 +1,16 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var assert = require('assert');
-var error = require('./error');
+const error = require('./error');
+const middleware = require('./middleware');
 
 module.exports = function(stockRepository) {
     var app = express();
     var routes = require('./routes')(stockRepository);
    
     app.use(bodyParser.json());
+    app.use(middleware.logRequest);
+    app.use(middleware.auth);
 
     app.post('/stock', routes.stockUp);
 
