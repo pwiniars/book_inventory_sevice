@@ -8,7 +8,7 @@
     "test": "mocha",
     "test:xunit": "npm run test -- --reporter xunit",
     "lint": "jshint --exclude=node_modules/** src",
-    "watch": "nodemon src/server.js",
+    "watch": "nodemon src/server.js"
   },
   "author": "",
   "license": "ISC",
