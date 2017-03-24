@@ -16,4 +16,15 @@ describe('Book inventory test', function () {
     			done();
     		});
   	});
+    it('get all items from stock', function (done) {
+      request(app)
+        .get('/stock')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(function(err, res) {
+          if (err) throw err;
+          assert(res.body != null);
+          done();
+        });
+    });
 });

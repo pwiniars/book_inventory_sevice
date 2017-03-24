@@ -21,13 +21,13 @@ exports.stockUp = function(isbn, count) {
 	});
 }
 
-exports.stockAll = function() {
+exports.findAll = function() {
 	return collectionPromise.then(function(collection) {
 		return collection.find({}).toArray();
 	});
 }
 
-exports.stockByIsbn = function(isbn) {
+exports.findByIsbn = function(isbn) {
 	return collectionPromise.then(function(collection) {
 		return collection.find({isbn}).limit(1).next();
 	});
