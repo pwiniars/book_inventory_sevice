@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var collection = null;
 // Connection URL
-var url = 'mongodb://localhost:27017/booksdb'
+var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/booksdb';
 
 var connectionPromise = MongoClient.connect(url, { bufferMaxEntries: 0 });
 var collectionPromise = connectionPromise.then(function(db) {
