@@ -19,7 +19,16 @@ module.exports = function(stockRepository) {
                 .findByIsbn(req.params.isbn)
                 .then(function(result) {
                     if (result) {
-                        res.json(result);
+                        res.format({
+                            html: function() {
+                                res.send('<p>Items in stock: ' + result.count + '</p>');
+                            },
+                            json: function() {
+                                res.json({
+                                    count: result.count
+                                });
+                            },
+                        });
                     } else {
                         res.status(404).send('No book with given isbn');
                     }
